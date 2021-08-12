@@ -1,0 +1,11 @@
+[Unit]
+Description=gunicorn socket
+
+[Socket]
+ListenStream=/home/petryk/django-template/project1/project1.sock
+
+[Install]
+WantedBy=sockets.target
+
+
+# ln -s /home/petryk/django-template/env/gunicorn/project1.socket /etc/systemd/system

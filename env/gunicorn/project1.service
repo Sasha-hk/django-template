@@ -6,8 +6,8 @@ After=network.target
 [Service]
 User=petryk
 Group=petryk
-WorkingDirectory=/home/petryk/django-template/project1
-ExecStart=/home/petryk/django-template/env/env/bin/gunicorn --access-logfile /home/petryk/django-template/env/gunicorn/log/gunicorn.log --workers 3  --bind unix:/home/petryk/django-template/project1/project1.sock config.wsgi:application  
+WorkingDirectory=/home/petryk/django-template/src
+ExecStart=/home/petryk/django-template/env/env/bin/gunicorn --error-logfile /home/petryk/django-template/env/gunicorn/log/error.log --access-logfile /home/petryk/django-template/env/gunicorn/log/access.log --workers 3  --bind unix:/home/petryk/django-template/src/project1.sock config.wsgi:application  
 
 [Install]
 WantedBy=multi-user.target

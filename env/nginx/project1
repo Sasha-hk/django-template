@@ -1,0 +1,11 @@
+server {
+    listen 8000;
+    server_name 192.168.1.11;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/petryk/django-template/project1/project1.sock;
+    }
+}
+
+# ln -s /home/petryk/django-template/env/nginx/project1 /etc/nginx/sites-enabled

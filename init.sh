@@ -36,11 +36,3 @@ mv env/gunicorn/project1.service env/gunicorn/project_name.service
 mv env/gunicorn/project1.socket env/gunicorn/project_name.socket
 
 sed -i "s%domain_name_replace%$domain_name%g" src/config/settings.py
-
-
-
-
-
-
-
-

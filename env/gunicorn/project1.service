@@ -1,16 +1,32 @@
 [Unit]
 Description=gunicorn daemon
-Requires=project1.socket
+Requires=project_name_replace.socket
 After=network.target
 
 [Service]
-User=petryk
-Group=petryk
-WorkingDirectory=/home/petryk/django-template/src
-ExecStart=/home/petryk/django-template/env/env/bin/gunicorn --error-logfile /home/petryk/django-template/env/gunicorn/log/error.log --access-logfile /home/petryk/django-template/env/gunicorn/log/access.log --workers 3  --bind unix:/home/petryk/django-template/src/project1.sock config.wsgi:application  
+User=user_replace
+Group=user_replace
+WorkingDirectory=base_dir_replace/src
+ExecStart=base_dir_replace/env/env/bin/gunicorn --error-logfile base_dir_replace/env/gunicorn/log/error.log --access-logfile base_dir_replace/env/gunicorn/log/access.log --workers 3  --bind unix:base_dir_replace/src/project_name_replace.sock config.wsgi:application  
 
 [Install]
 WantedBy=multi-user.target
 
 
 # ln -s /home/petryk/django-template/env/gunicorn/project1.service /etc/systemd/system
+
+
+
+# [Unit]
+# Description=gunicorn daemon
+# Requires=project1.socket
+# After=network.target
+
+# [Service]
+# User=petryk
+# Group=petryk
+# WorkingDirectory=/home/petryk/django-template/src
+# ExecStart=/home/petryk/django-template/env/env/bin/gunicorn --error-logfile /home/petryk/django-template/env/gunicorn/log/error.log --access-logfile /home/petryk/django-template/env/gunicorn/log/access.log --workers 3  --bind unix:/home/petryk/django-template/src/project1.sock config.wsgi:application  
+
+# [Install]
+# WantedBy=multi-user.target

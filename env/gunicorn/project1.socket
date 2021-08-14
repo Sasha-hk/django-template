@@ -2,7 +2,7 @@
 Description=gunicorn socket
 
 [Socket]
-ListenStream=/home/petryk/django-template/src/project1.sock
+ListenStream=base_dir_replace/src/project_name_replace.sock
 
 [Install]
 WantedBy=sockets.target

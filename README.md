@@ -1,15 +1,15 @@
 #Simple start pattern for django
 
 <main>
-Goal of the repository, faster settings of server
-
-First log in to root, and run 
+Goal of the repository, faster settings of server<br>
+<br>
+First log in to root, and run <br>
 
 ```shell
     . ./init.sh
 ```
 
-Enter domain name, for example google.com
-Enter project name, for example google
-Enter user to run gunicorn 
+Enter domain name, for example google.com<br>
+Enter project name, for example google<br>
+Enter user to run gunicorn<br>
 </main>

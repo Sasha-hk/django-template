@@ -7,5 +7,3 @@ server {
         proxy_pass proxy_pass_replace;
     }
 }
-
-# ln -s /home/petryk/django-template/env/nginx/project1 /etc/nginx/sites-enabled

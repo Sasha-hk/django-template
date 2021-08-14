@@ -14,14 +14,15 @@ read project_name
 echo -n 'Enter user to run gunicorn: '
 read user 
 
-# path_to_project="$base_dir/$project_name"
+
 proxy_pass="http://unix:$base_dir/src/$project_name.sock"
 
 
+virtualenv env/env
+source env/env/bin/activate
+pip install -r env/requirements.txt
 
-# domain_name_replace
-# proxy_pass_replace
-# base_dir_replace
+
 sed -i "s%domain_name_replace%$domain_name%g" env/nginx/project1
 sed -i "s%proxy_pass_replace%$proxy_pass%g" env/nginx/project1  
 
@@ -34,27 +35,12 @@ sed -i "s%user_replace%$user%g" env/gunicorn/project1.service
 mv env/gunicorn/project1.service env/gunicorn/project_name.service
 mv env/gunicorn/project1.socket env/gunicorn/project_name.socket
 
-
-
-
-# virtualenv env/env
-# source env/env/bin/activate
-# pip install -r env/requirements.txt
+sed -i "s%domain_name_replace%$domain_name%g" src/config/settings.py
 
 
 
 
 
-
-
-# add domain name to allowed hosts 
-
-# rename ptoject1 to project name
-# rename name files of all files to project name
-
-
-# start gunicorn service 
-# enable gunicorn service 
 
 
 

@@ -6,6 +6,3 @@ ListenStream=base_dir_replace/src/project_name_replace.sock
 
 [Install]
 WantedBy=sockets.target
-
-
-# ln -s /home/petryk/django-template/env/gunicorn/project1.socket /etc/systemd/system

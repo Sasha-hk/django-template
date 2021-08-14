@@ -1,4 +1,4 @@
-#Simple start pattern for django
+# Simple start pattern for django
 
 <main>
 Goal of the repository, faster settings of server<br>

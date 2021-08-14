@@ -5,7 +5,7 @@ project_name=""
 base_dir=$(pwd) 
 user=""
 
-echo -n 'Enter domain name: '
+echo -n 'Enter domain name, for example google.com: '
 read domain_name
 
 echo -n 'Enter project name: '

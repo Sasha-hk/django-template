@@ -1,4 +1,5 @@
 env/env/
+env/.env
 env/gunicorn/log/
 
 __pycache__

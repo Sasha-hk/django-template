@@ -15,10 +15,10 @@ gunicorn_workers_count=0
 base_dir="$PWD"
 
 echo "${RED}[!]${None} You must have installed:
-        - nginx
-        - gunicotn\n
-    Elso make .env file with enviroment variables\non env directory\nYou can use .env.template"
- 
+    - nginx
+    - gunicotn\n
+${RED}[!]${None} Elso make .env file with enviroment variables on env directory You can use ${GREEN}.env.template${None}\n"
+
 
 # Get neded variables
 
@@ -101,7 +101,7 @@ WantedBy=multi-user.target" >> systemd/$project_name.service
 
 
 # Creating a symbolic link for server files
-echo "\n${RED}[!]${None} Now we need to set some files which need root access"
+echo "\n${YELLOW}[?]${None} Now we need to set some files which need root access"
 
 su -c "ln -s $base_dir/env/nginx/$project_name /etc/nginx/sites-enabled
 ln -s $base_dir/env/systemd/$project_name.socket /etc/systemd/system
@@ -110,5 +110,11 @@ service nginx restart
 systemctl daemon-reload
 systemctl enable $project_name
 systemctl restart $project_name"  
+
+
+echo "\n${GREEN}[+] Probably all done !${None}
+    You can check ${CYAN}service nginx status${None}
+    and ${CYAN}systemctl status ${project_name}${None}"
+
 
 cd ..

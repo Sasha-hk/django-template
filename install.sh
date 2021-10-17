@@ -21,7 +21,6 @@ ${RED}[!]${None} Elso make .env file with enviroment variables on env directory 
 
 
 # Get neded variables
-
 echo -n "${CYAN}[+]${None} Enter domain name, for example 'google.com': "
 read domain_name 
 
@@ -37,30 +36,22 @@ read gunicorn_workers_count
 
 
 # replace domain name on setting.py
-
 sed -i "s/domain_name_replace/${domain_name}/g" src/config/settings.py
 
 
-
 # Create and activate virtualenviroment
-
 cd env
 virtualenv env
 . env/bin/activate
-
 echo "\n${GREEN}Installing packages${None}"
-
 pip install -r requirements.txt
 
 
 
 # Create and fill server files
-
 mkdir nginx systemd
 mkdir -p systemd/log
-
 path_to_sock_file="/run/$project_name.sock"
-
 
 
 ## NGINX
@@ -99,10 +90,8 @@ ExecStart=$base_dir/env/env/bin/gunicorn --error-logfile $base_dir/env/systemd/l
 WantedBy=multi-user.target" >> systemd/$project_name.service
 
 
-
 # Creating a symbolic link for server files
 echo "\n${YELLOW}[?]${None} Now we need to set some files which need root access"
-
 su -c "ln -s $base_dir/env/nginx/$project_name /etc/nginx/sites-enabled
 ln -s $base_dir/env/systemd/$project_name.socket /etc/systemd/system
 ln -s $base_dir/env/systemd/$project_name.service /etc/systemd/system
@@ -111,10 +100,8 @@ systemctl daemon-reload
 systemctl enable $project_name
 systemctl restart $project_name"  
 
-
 echo "\n${GREEN}[+] Probably all done !${None}
     You can check ${CYAN}service nginx status${None}
     and ${CYAN}systemctl status ${project_name}${None}"
-
 
 cd ..

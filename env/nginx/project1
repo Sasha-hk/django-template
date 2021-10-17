@@ -1,9 +1,0 @@
-server {
-    listen 8000;
-    server_name domain_name_replace;
-
-    location / {
-        include proxy_params;
-        proxy_pass proxy_pass_replace;
-    }
-}

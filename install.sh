@@ -11,12 +11,13 @@ None=`tput sgr0`
 domain_name=""
 project_name=""
 user_to_run_gunicorn=""
-gunicorn_workers_count=3 
+gunicorn_workers_count=0 
 base_dir="$PWD"
 
 echo "${RED}[!]${None} You must have installed:
         - nginx
-        - gunicotn\n"
+        - gunicotn\n
+    Elso make .env file with enviroment variables\non env directory\nYou can use .env.template"
  
 
 # Get neded variables
@@ -46,6 +47,9 @@ sed -i "s/domain_name_replace/${domain_name}/g" src/config/settings.py
 cd env
 virtualenv env
 . env/bin/activate
+
+echo "\n${GREEN}Installing packages${None}"
+
 pip install -r requirements.txt
 
 
@@ -97,15 +101,14 @@ WantedBy=multi-user.target" >> systemd/$project_name.service
 
 
 # Creating a symbolic link for server files
-echo "${RED}[!]${None} Now we need to set some files which need root access, enter root password"
-su root
+echo "\n${RED}[!]${None} Now we need to set some files which need root access"
 
-su -c "ln -s $PWD/nginx/$project_name /etc/nginx/sites-enabled"
+su -c "ln -s $base_dir/env/nginx/$project_name /etc/nginx/sites-enabled
+ln -s $base_dir/env/systemd/$project_name.socket /etc/systemd/system
+ln -s $base_dir/env/systemd/$project_name.service /etc/systemd/system
+service nginx restart
+systemctl daemon-reload
+systemctl enable $project_name
+systemctl restart $project_name"  
 
-su -c "ln -s $PWD/systemd/$project_name.socket /etc/systemd/system" 
-su -c "ln -s $PWD/systemd/$project_name.service /etc/systemd/system"  
-
-su -c "service nginx restart"
-su -c "systemctl daemon-reload"
-su -c "systemctl enable $project_name" 
-su -c "systemctl restart $project_name" 
+cd ..

@@ -1,19 +1,23 @@
 # Template for django
 
-This repository is a simple and quick template for creating your project. We also have an ./install.sh file that simplifies setting up your project on a server<br>
-
-<h2>Uses technologys:</h2>
-
-- Nginx
-- Gunicorn
+This repository is a simple and quick template for creating your project. We also have an ./deploy.sh file that simplifies setting up your project on a server<br>
 
 <br>
-<h2>To set up project on your server you may to do this:</h2>
+<h2>To start development:</h2>
 
-- make .env file in the env directory, you can use the .env.template file as template
-- enter this comment at the root of the project
+- run install.sh file in the env dir
+
     ```shell
     . ./install.sh
+    ```
+
+<h2>To deploy project:</h2>
+
+- make .env file in the env dir, you can use the .env.template file as template
+- run deploy.sh
+
+    ```shell
+    . ./deploy.sh
     ```
 
 - enter needed data

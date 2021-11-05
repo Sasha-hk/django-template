@@ -1,6 +1,9 @@
 env/env/
 env/.env
-env/gunicorn/log/
+env/systemd
+env/nginx
 
-__pycache__
+# python
+__pycache__/
+migrations/
 db.sqlite3
